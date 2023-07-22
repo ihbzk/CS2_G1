@@ -1,0 +1,371 @@
+#Roles
+#
+# 1 - User
+# 2 - Admin
+# 3 - Vendeur
+
+/:
+  controller: Main
+  action: index
+  security: false
+  role: []
+  sitemap: true
+  meta_title: Boutique en ligne de vêtements tendance | HipShop
+  meta_description: Découvrez notre sélection de vêtements tendance pour hommes et femmes. Achetez en ligne les dernières tendances de la mode chez HipShop.
+  meta_keywords: HipShop
+  
+/usercreateprofile: 
+  controller: User
+  action: userCreateProfile
+  security: false
+  role: []
+  sitemap: false
+  
+/contact:
+  controller: Main
+  action: contact
+  security: false
+  role: []
+  sitemap: true
+  meta_title: Contactez-nous | HipShop
+  meta_description: Besoin d'aide ou d'informations supplémentaires ? Contactez l'équipe de HipShop via notre formulaire de contact. Nous sommes là pour vous aider !
+  meta_keywords: Contact
+
+/private-policy:
+  controller: Main
+  action: privatePolicy
+  security: false
+  role: []
+  sitemap: true
+  meta_title: Politique de confidentialité | HipShop
+  meta_description: Consultez notre politique de confidentialité pour connaître les informations sur la collecte et l'utilisation de vos données personnelles sur HipShop.
+  meta_keywords: Politique de confidentialité
+
+/terms-and-conditions:
+  controller: Main
+  action: legalesMentions
+  security: false
+  role: []
+  sitemap: true
+  meta_title: Mentions légales | HipShop
+  meta_description: Consultez nos mentions légales pour connaître les conditions d'utilisation du site HipShop, les droits d'auteur et autres informations légales.
+  meta_keywords: Mentions légales
+  
+/login:
+  controller: Security
+  action: login
+  security: false
+  role: []
+  sitemap: false
+
+/register:
+  controller: Security
+  action: register
+  security: false
+  role: []
+  sitemap: false  
+
+/logout:
+  controller: Security
+  action: logout
+  security: true
+  role: [1,2,3]
+  sitemap: false
+  
+/profile:
+  controller: User
+  action: userProfile
+  security: true
+  role: [1,2,3]
+  sitemap: false
+  
+/sitemap:
+  controller: Security
+  action: generateSitemap
+  security: false
+  role: []
+  sitemap: false
+
+# Routes Verifications
+
+/verifuser:
+  controller: Security
+  action : userVerification
+  security: false
+  role: []
+  sitemap: false
+
+/passwordforgot:
+  controller : Security
+  action : forgotPassword
+  security: false
+  role: []
+  sitemap: false
+
+/definenewpassword:
+  controller : Security
+  action : defineNewPassword
+  security : false
+  role: []
+  sitemap: false
+
+# Routes User Profile
+
+/update-firstname:
+  controller: User
+  action: updateFirstname
+  security: true
+  role: [1,2,3]
+  sitemap: false
+  
+/update-lastname:
+  controller: User
+  action: updateLastname
+  security: true
+  role: [1,2,3]
+  sitemap: false
+  
+/update-pseudo:
+  controller: User
+  action: updatePseudo
+  security: true
+  role: [1,2,3]
+  sitemap: false
+  
+/update-phone:
+  controller: User
+  action: updatePhone
+  security: true
+  role: [1,2,3]
+  sitemap: false
+  
+/update-address:
+  controller: User
+  action: updateAddress
+  security: true
+  role: [1,2,3]
+  sitemap: false
+  
+/update-thumbnail:
+  controller: User
+  action: updateThumbnail
+  security: true
+  role: [1,2,3]
+  sitemap: false
+
+/report-comment:
+  controller: Comment
+  action: reportComment
+  security: false
+  role: []
+  sitemap: false
+  
+# Routes Admin
+
+/admin/users:
+  controller: Admin
+  action: users
+  security: true
+  role: [2]
+  sitemap: false
+  
+/admin/dashboard:
+  controller: Admin
+  action: dashboard
+  security: true
+  role: [2]
+  sitemap: false
+  
+/admin/comments:
+  controller: Admin
+  action: comments
+  security: true
+  role: [2]
+  sitemap: false
+
+/unreport-comment:
+  controller: Admin
+  action: unreportComment
+  security: true
+  role: [2]
+  sitemap: false
+
+/admin/products:
+  controller: Admin
+  action: products
+  security: true
+  role: [2]
+  sitemap: false
+
+/admin/products/user:
+  controller: Admin
+  action: userProducts
+  security: true
+  role: [2]
+  sitemap: false
+
+/admin/pages:
+  controller: Admin
+  action: pages
+  security: true
+  role: [2]
+  sitemap: false
+
+/admin/pages/add/step-1:
+  controller: Admin
+  action: addPage
+  security: true
+  role: [2]
+  sitemap: false
+
+/admin/pages/add/step-2:
+  controller: Admin
+  action: addPageElement
+  security: true
+  role: [2]
+  sitemap: false
+
+/admin/pages/edit:
+  controller: Admin
+  action: showSinglePage
+  security: true
+  role: [2]
+  sitemap: false
+
+/admin/pages/restore-version:
+  controller: Admin
+  action: restoreVersionAction
+  security: true
+  role: [2]
+  sitemap: false
+
+/update-page-name:
+  controller: Admin
+  action: updatePageNameAction
+  security: true
+  role: [2]
+  sitemap: false
+
+/admin/users/profile:
+  controller: Admin
+  action: showUser
+  security: true
+  role: [2]
+  sitemap: false
+
+# Routes Product
+
+/products:
+  controller: ProductController
+  action: products
+  security: false
+  role: []
+  sitemap: true
+  meta_title: Découvrez notre collection de produits | HipShop
+  meta_description: Parcourez notre large sélection de produits tendance pour hommes et femmes. Trouvez les vêtements, les accessoires et les articles de mode parfaits chez HipShop.
+  meta_keywords: Produits
+
+/products/page:
+  controller: ProductController
+  action: showProductPage
+  security: false
+  role: []
+  sitemap: false
+
+/search:
+  controller: ProductController
+  action: searchProducts
+  security: false
+  role: []
+  sitemap: false
+  
+# Routes Seller
+  
+/products/add:
+  controller: Seller
+  action: addProduct
+  security: true
+  role: [3]
+  sitemap: false
+
+/products/all:
+  controller: Seller
+  action: showAllProductSeller
+  security: true
+  role: [3]
+  sitemap: false
+
+/products/all/edit:
+  controller: Seller
+  action: showProductSellerPage
+  security: true
+  role: [3]
+  sitemap: false
+
+/update-product-name:
+  controller: Seller
+  action: updateProductNameAction
+  security: true
+  role: [3]
+  sitemap: false
+  
+# Routes Cart
+
+/cart:
+  controller: ProductController
+  action: productCart
+  security: false
+  role: []
+  sitemap: true
+  meta_title: Votre panier | HipShop
+  meta_description: Consultez votre panier sur HipShop et préparez-vous à finaliser votre commande. Ajoutez, supprimez ou modifiez les articles dans votre panier en quelques clics.
+  meta_keywords: Panier
+
+/remove-from-cart:
+  controller: ProductController
+  action: removeFromCart
+  security: false
+  role: []
+  sitemap: false
+
+# Routes Page
+
+/pages:
+  controller: PageController
+  action: pages
+  security: false
+  role: []
+  sitemap: true
+  meta_title: Découvrez nos pages | HipShop
+  meta_description: Explorez les différentes pages du site HipShop pour trouver des informations détaillées sur nos produits, nos services et notre entreprise.
+  meta_keywords: Pages
+
+/pages/page:
+  controller: PageController
+  action: showPage
+  security: false
+  role: []
+  sitemap: false
+
+#Installer 
+
+/install/step-1:
+  controller: Installer
+  action: install
+  security: false
+  role : []
+  sitemap: false
+
+/api/database:
+  controller: checkDatabase
+  action: check
+  security: false
+  role: []
+  sitemap: false
+
+/api/user:
+  controller: createUser
+  action: create
+  security: false
+  role: []
+  sitemap: false

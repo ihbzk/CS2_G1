@@ -1,0 +1,5 @@
+/* Arabolical Font */
+@font-face {
+    font-family: 'Arabolical';
+    src: url('../font/arabolical/ARABOLIC.TTF') format('truetype')
+}

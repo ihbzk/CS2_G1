@@ -1,0 +1,14 @@
+@import url("import.css");
+
+* {
+    box-sizing: border-box;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.logo-title {
+    font-size: 40px;
+    font-family: 'Arabolical';
+}
